@@ -1,0 +1,19 @@
+#mainbody {
+  height: 100%;
+  width: 100%;
+  /* background-color:rgb(255, 255, 255) ; */
+  
+}
+.admin{
+  margin-left: 445px;
+}
+.user{
+  margin-left: 40px;
+}
+.row{
+  margin-right: 539px;
+    margin-left: 346px;
+}
+button{
+  font-family:Times;font-weight:bold
+}

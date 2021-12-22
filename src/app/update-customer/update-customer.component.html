@@ -1,0 +1,99 @@
+<div id="adminpage" style="  margin-top: -150px;">
+    <!-- <router-outlet></router-outlet> -->
+    <nav class="navbar navbar-expand-lg navbar-light " id="navigation" style="background-color: #cfe8f9;">
+        <div class="container-fluid">
+          <a class="navbar-brand" routerLink="../Admin">Welcome Admin</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" routerLink="../Admin">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../AddDetails">Manage Records</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../ViewRecord">View Records</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../AddCustomer">Add Customer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../UpdateCustomer">Update Customer</a>
+              </li>
+              <li class="nav-item" style="margin-left: 550px;">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#myModal">
+                  Log Out
+                </button>
+              <div class="modal fade" id="myModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+              
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">Do you want to logOut??</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="logout()">Log Out</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              
+                      </div>
+              
+                    </div>
+                  </div>
+                </div>
+                <!-- <button class="btn btn-outline-success"  (click)="logout()">Log Out</button> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav><br>
+<div>
+    <h2 style="text-align: center;font-family: 'Times New Roman', Times, serif;">Update Customer</h2><br>
+    <table style="margin: auto;" cellpadding="10px" cellspacing="5px">
+        <tr>
+            <th>Enter Id</th>
+            <td><input type="number" [(ngModel)]="CustObj.CustomerId" (change)="FetchData()" class="form-control "></td>
+        </tr>
+        <tr>
+            <th>Enter Name</th>
+            <td><input type="text" [(ngModel)]="CustObj.CustomerName" class="form-control "></td>
+        </tr>
+        <tr>
+            <th>Choose DOB</th>
+            <td><input type="date" [(ngModel)]="CustObj.CustomerDOB" class="form-control "></td>
+        </tr>
+        <tr>
+            <th>Enter Phone No</th>
+            <td><input type="text" [(ngModel)]="CustObj.CustomerContact" class="form-control "></td>
+        </tr>
+        <tr>
+            <th>Enter Address</th>
+            <td><input type="text" [(ngModel)]="CustObj.CustomerAddress" class="form-control "></td>
+        </tr>
+        <tr>
+            <th>Choose Gender</th>
+            <td>    <input type="radio" class="form-check-input" value="Male" name="gender" [(ngModel)]="CustObj.CustomerGender">Male &nbsp;   
+                <input type="radio" class="form-check-input" value="Female" name="gender" [(ngModel)]="CustObj.CustomerGender">Female &nbsp;   
+                <input type="radio" class="form-check-input" value="Other" name="gender" [(ngModel)]="CustObj.CustomerGender">Others 
+            </td>
+            
+        </tr>
+        <tr>
+            <th>Enter Email</th>
+            <td><input type="email" [(ngModel)]="CustObj.CustomerEmail" class="form-control "></td>
+        </tr>
+        <tr>
+            <th>Enter Password</th>
+            <td><input type="password" [(ngModel)]="CustObj.CustomerPassword" class="form-control "></td>
+        </tr>
+    
+    </table><br>
+    <button (click)="UpdateData()" class="btn btn-primary pd" style="margin-left: 650px;">Update Details</button><br><br><br><br>
+</div>
+</div>

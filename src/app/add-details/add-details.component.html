@@ -1,0 +1,215 @@
+<div id="adminpage" style="  margin-top: -150px;">
+   
+    <nav class="navbar navbar-expand-lg navbar-light " id="navigation" style="background-color: #cfe8f9;">
+        <div class="container-fluid">
+          <a class="navbar-brand" routerLink="../Admin">Welcome Admin</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" routerLink="../Admin">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../AddDetails">Manage Records</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../ViewRecord">View Records</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../AddCustomer">Add Customer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../UpdateCustomer">Update Customer</a>
+              </li>
+              <li class="nav-item" style="margin-left: 550px;">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Log Out
+                  </button>
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">Do you want to logOut??</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="logout()">Log Out</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                
+                        </div>
+                
+                      </div>
+                    </div>
+                  </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav><br>
+      <h3>Book Details</h3>
+<div style="padding-left: 40px;">
+    <table cellpadding="10px" cellspacing="5px">
+        <tr>
+            <th>
+                Book Id
+            </th>
+            <td>
+                <input type="number" class="form-control " [(ngModel)]='bkid' (change)='FetchBooks()'>
+            </td>
+            <td>
+                <button class="btn btn-outline-light" (click)='UpdateBook()'>Update</button>
+            </td>
+            <td>
+                <button class="btn btn-outline-light" (click)='DeleteBook()'>Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                Book Name
+            </th>
+            <td>
+                <input type="text" class="form-control " [(ngModel)]='bookObj.BookName'>&nbsp;&nbsp;&nbsp;
+            </td>
+            <th>
+                Book Author Id
+            </th>
+            <td>
+                <select [(ngModel)]='bookObj.BookAuthorId' class="form-select">
+                    <option value='{{item.AuthorId}}' *ngFor="let item of authors">{{item.AuthorName}}</option>
+                </select>
+            </td>&nbsp;&nbsp;
+            <th>
+                Book Publisher Id
+            </th>
+            <td>
+                <select [(ngModel)]='bookObj.BookPublisherId' class="form-select">
+                    <option value='{{item.PublisherId}}' *ngFor="let item of publishers">{{item.PublisherName}}</option>
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <th>Book Price</th>
+            <td>
+                <input type="number" class="form-control " [(ngModel)]='bookObj.BookPrice'>
+            </td>
+            <th>
+                Book Category
+            </th>
+            <td><input type="text"  class="form-control " [(ngModel)]='bookObj.BookCatagory'> </td>&nbsp;&nbsp;&nbsp;
+            <th>
+                Number Of Copies
+            </th>
+            <td><input type="number" class="form-control" [(ngModel)]='bookObj.NoofCopies'></td>
+        </tr>
+        <tr>
+            &nbsp;&nbsp;&nbsp;<td> <button  class="btn btn-outline-light" [disabled]="!bookObj.BookName||!bookObj.BookAuthorId||!bookObj.BookPublisherId||!bookObj.BookPrice||!bookObj.BookCatagory||!bookObj.NoofCopies" (click)='AddBook()'>Add Book</button></td>
+        </tr>
+    </table>
+</div>
+<br>
+<br><h3>Author Details</h3>
+<div style="padding-left: 40px;">
+    <table cellpadding="10px" cellspacing="5px">
+        <tr>
+            <th>
+                Author Id
+            </th>
+            <td>
+                <input type="number" class="form-control" [(ngModel)]='authObj.AuthorId' (change)='FetchAuthors()'>
+            </td>
+            <th>Author Name</th>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]='authObj.AuthorName'>
+            </td>
+            <th>No Of Books Written</th>
+            <td><input type="number" class="form-control" [(ngModel)]='authObj.NoofBooksWritten'></td>
+        </tr>
+        <tr>
+            <th>
+                Author Contact
+            </th>
+            <td>
+                <input type="number" class="form-control" [(ngModel)]='authObj.AuthorContact'>&nbsp;&nbsp;&nbsp;
+            </td>
+            <th>
+                Author Email
+            </th>
+            <td>
+                <input type="email" class="form-control" [(ngModel)]='authObj.AuthorMailId'>
+            </td>
+            <th>
+                Author City
+            </th>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]='authObj.AuthorCity'> 
+            </td>
+
+        </tr>
+        <tr>
+            &nbsp;&nbsp;&nbsp;<td>
+                <button class="btn btn-outline-light" [disabled]="!authObj.AuthorId||!authObj.AuthorName||!authObj.NoofBooksWritten||!authObj.AuthorContact||!authObj.AuthorMailId||!authObj.AuthorCity" (click)='AddAuthor()'>Add</button>
+            </td>
+            <td>
+                <button class="btn btn-outline-light" (click)='UpdateAuthor()'>Update</button>
+            </td>
+            <td>
+                <button class="btn btn-outline-light" (click)='DeleteAuthor()'> Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<br>
+<br><h3>Publisher Details</h3>
+<div style="padding-left: 40px;">
+    <table cellpadding="10px" cellspacing="5px">
+        <tr>
+            <th>
+                Publisher Id
+            </th>
+            <td>
+                <input type="number" class="form-control" [(ngModel)]='pubObj.PublisherId' (change)='FetchPublishers()'>
+            </td>
+            <th>Publisher Name</th>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]='pubObj.PublisherName'>
+            </td>
+            <th>No Of Books Published</th>
+            <td><input type="number" class="form-control" [(ngModel)]='pubObj.NoofBooksPublished'></td>
+        </tr>
+        <tr>
+            <th>
+                City
+            </th>
+            <td>
+                <input type="text" class="form-control" [(ngModel)]='pubObj.City'>&nbsp;&nbsp;&nbsp;
+            </td>
+            <th>
+                Contact Number
+            </th>
+            <td>
+                <input type="number" class="form-control" [(ngModel)]='pubObj.ContactInfo'>
+            </td>
+
+
+        </tr>
+        <tr>
+            &nbsp;&nbsp;&nbsp;<td>
+                <button class="btn btn-outline-light" [disabled]="!pubObj.PublisherId||!pubObj.PublisherName||!pubObj.NoofBooksPublished||!pubObj.City||!pubObj.ContactInfo" (click)='AddPublisher()'>Add</button>
+            </td>
+            <td>
+                <button class="btn btn-outline-light" (click)='UpdatePublisher()'>Update</button>
+            </td>
+            <td>
+                <button class="btn btn-outline-light" (click)='DeletePublisher()'>Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
+</div>

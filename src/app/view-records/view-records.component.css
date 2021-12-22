@@ -1,0 +1,19 @@
+.tablehead{
+    background-color: #b8bdf1c7;
+}
+.tabledata{
+    background-color: #095b83b0; 
+    color: #fffcf0;
+}
+.pd{
+    margin-left: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+div{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+.btn-outline-info{
+    margin-left: 20px;
+}

@@ -1,0 +1,97 @@
+<div id="userpage">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" routerLink="../User">Hello &nbsp;{{CustObj.CustomerName}}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="../User">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="../BookIssue">Issue Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="../EditProfile">Update Profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="../History">Check History</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#myModal">
+                        Log Out
+                    </button>
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Do you want to logOut??</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                        (click)="logout()">Log Out</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button> -->
+                </form>
+            </div>
+        </nav>
+    </div><br><br>
+    <div>
+        <h2 style="text-align: center;font-family: 'Times New Roman', Times, serif;">Update Profile</h2><br>
+        <table style="margin: auto;" cellpadding="10px" cellspacing="5px">
+           
+            <tr>
+                <th> Name</th>
+                <td><input type="text" [(ngModel)]="CustObj.CustomerName" class="form-control "></td>
+            </tr>
+            <tr>
+                <th> DOB</th>
+                <td><input type="date" [(ngModel)]="CustObj.CustomerDOB" class="form-control "></td>
+            </tr>
+            <tr>
+                <th> Phone No</th>
+                <td><input type="text" [(ngModel)]="CustObj.CustomerContact" class="form-control "></td>
+            </tr>
+            <tr>
+                <th> Address</th>
+                <td><input type="text" [(ngModel)]="CustObj.CustomerAddress" class="form-control "></td>
+            </tr>
+            <tr>
+                <th> Gender</th>
+                <td><input type="radio" value="Male" name="gender" [(ngModel)]="CustObj.CustomerGender">Male  
+                    <input type="radio" value="Female" name="gender" [(ngModel)]="CustObj.CustomerGender">Female  
+                    <input type="radio" value="Other" name="gender" [(ngModel)]="CustObj.CustomerGender">Others 
+                </td>
+                
+            </tr>
+            <tr>
+                <th> Email</th>
+                <td><input type="email" [(ngModel)]="CustObj.CustomerEmail" class="form-control "></td>
+            </tr>
+            <tr>
+                <th> Password</th>
+                <td><input type="password" [(ngModel)]="CustObj.CustomerPassword" class="form-control "></td>
+            </tr>
+        
+        </table><br>
+        <button (click)="UpdateData()" class="btn btn-primary pd" style="margin-left: 650px;">Update Profile</button><br><br><br><br>
+    </div>
+</div>

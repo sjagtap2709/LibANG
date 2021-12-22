@@ -1,0 +1,218 @@
+<div id="adminpage" style="  margin-top: -150px;">
+    <!-- <router-outlet></router-outlet> -->
+    <nav class="navbar navbar-expand-lg navbar-light " id="navigation" style="background-color: #cfe8f9;">
+        <div class="container-fluid">
+          <a class="navbar-brand" routerLink="../Admin" style="color: black;">Welcome Admin</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" routerLink="../Admin">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../AddDetails">Manage Records</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../ViewRecord">View Records</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../AddCustomer">Add Customer</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="../UpdateCustomer">Update Customer</a>
+              </li>
+              <li class="nav-item" style="margin-left: 550px;">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#myModal">
+                    Log Out
+                  </button>
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">Do you want to logOut??</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="logout()">Log Out</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                
+                        </div>
+                
+                      </div>
+                    </div>
+                  </div>
+                <!-- <button class="btn btn-outline-success"  (click)="logout()">Log Out</button> -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav><br><br>
+<div>
+
+<div>
+    <!-- <span> Search Records</span><br>
+    <span>Enter Customer ID</span>
+    <span><input type="number" [(ngModel)]='id' class="form-control "></span>
+    <button class="btn btn-outline-info" (click)="Search(); " >Search</button> -->
+    <table cellspacing="5px" cellpadding="10px">
+      <tr>
+        <th>Search Records</th>
+      </tr>
+      <tr>
+        <th>Enter Customer ID</th>
+        <td><input type="number" [(ngModel)]='id' class="form-control "></td>
+        <td><button class="btn btn-outline-info" (click)="Search(); " >Search</button></td>
+      </tr>
+    </table>
+</div>
+<br>
+<nav  >
+    <button (click)="ViewCust()" class="btn btn-primary pd" >Customers</button>
+    <button (click)="ViewBook()"class="btn btn-primary pd">Books</button>
+    <button (click)="ViewAuth()"class="btn btn-primary pd">Author</button>
+    <button (click)="ViewPub()" class="btn btn-primary pd">Publisher</button>
+    <button (click)="ViewTrans()" class="btn btn-primary pd">Transaction</button>
+</nav>
+<br><br>
+
+<div id="cust" *ngIf="cs">
+    <table class="table table-striped table-hover">
+        <tr class="tablehead" >
+            <th>CustomerId</th>
+            <th>CustomerName</th>
+            <th>CustomerDOB</th>
+            <th>CustomerContact</th>
+            <th>CustomerAddress</th>
+            <th>CustomerGender</th>
+            <th>CustomerEmail</th>
+        </tr>
+        <tr *ngFor="let item of customers" class="tabledata">
+            <td >{{item.CustomerId}}</td>
+            <td>{{item.CustomerName}}</td>
+            <td>{{item.CustomerDOB}}</td>
+            <td>{{item.CustomerContact}}</td>
+            <td>{{item.CustomerAddress}}</td>
+            <td>{{item.CustomerGender}}</td>
+            <td>{{item.CustomerEmail}}</td>
+        </tr>
+    </table>
+</div>
+<div id="book" *ngIf="bs">
+    <table class="table table-striped table-hover" >
+        <tr class="tablehead">
+            <th>BookId</th>
+            <th>BookName</th>
+            <th>BookAuthorId</th>
+            <th>BookPublisherId</th>
+            <th>BookPrice</th>
+            <th>BookCatagory</th>
+            <th>NoofCopies</th>
+        </tr>
+        <tr *ngFor="let item of books" class="tabledata">
+            <td>{{item.BookId}}</td>
+            <td>{{item.BookName}}</td>
+            <td>{{item.BookAuthorId}}</td>
+            <td>{{item.BookPublisherId}}</td>
+            <td>{{item.BookPrice}}</td>
+            <td>{{item.BookCatagory}}</td>
+            <td>{{item.NoofCopies}}</td>
+        </tr>
+    </table>
+</div>
+<div id="author" *ngIf="a">
+    <table class="table table-striped table-hover">
+        <tr class="tablehead">
+            <th>AuthorId</th>
+            <th>AuthorName</th>
+            <th> NoofBooksWritten</th>
+            <th>AuthorContact</th>
+            <th>AuthorMailId</th>
+            <th>AuthorCity</th>
+        </tr>
+        <tr *ngFor="let item of authors" class="tabledata">
+            <td>{{item.AuthorId}}</td>
+            <td>{{item.AuthorName}}</td>
+            <td>{{item.NoofBooksWritten}}</td>
+            <td>{{item.AuthorContact}}</td>
+            <td>{{item.AuthorMailId}}</td>
+            <td>{{item.AuthorCity}}</td>
+        </tr>
+
+    </table>
+</div>
+<div id="Publisher" *ngIf="ps">
+    <table class="table table-striped table-hover">
+        <tr class="tablehead">
+            <th>PublisherId</th>
+            <th>PublisherName</th>
+            <th> NoofBooksPublished</th>
+            <th>City</th>
+            <th>ContactInfo</th>
+
+        </tr>
+        <tr *ngFor="let item of publishers" class="tabledata">
+            <td>{{item.PublisherId}}</td>
+            <td>{{item.PublisherName}}</td>
+            <td>{{item.NoofBooksPublished}}</td>
+            <td>{{item.City}}</td>
+            <td>{{item.ContactInfo}}</td>
+
+        </tr>
+
+    </table>
+</div>
+<div id="trans" *ngIf="ts">
+    <table class="table table-striped table-hover">
+        <tr class="tablehead">
+            <th>TransactionID</th>
+            <th>CustomerID</th>
+            <th>BookId</th>
+            <th>BookIssueDate</th>
+            <th>BookSubmitDate</th>
+            <th>TransactionStatus</th>
+        </tr>
+        <tr *ngFor="let item of transactions" class="tabledata">
+            <td>{{item.TransactionID}}</td>
+            <td>{{item.CustomerID}}</td>
+            <td>{{item.BookId}}</td>
+            <td>{{item.BookIssueDate}}</td>
+            <td>{{item.BookSubmitDate}}</td>
+            <td>{{item.TransactionStatus}}</td>
+
+        </tr>
+    </table>
+   
+
+    
+</div>
+<div  id="utrans" *ngIf="uts">
+  <table class="table table-striped table-hover">
+    <tr class="tablehead">
+        <th>Transaction Id</th>
+        <th>Book Id</th>
+        <th>Book Name</th>
+        <th>Book Catagory</th>
+        <th>Issue Date</th>
+        <th>Submit Date</th>
+        <th>Transaction Status</th>
+    </tr>
+    <tr *ngFor="let item of transactions" class="tabledata">
+        <td >{{item.TransactionID}}</td>
+        <td>{{item.BookId}}</td>
+        <td>{{item.BookName}}</td>
+        <td>{{item.BookCatagory}}</td>
+        <td>{{item.BookIssueDate}}</td>
+        <td>{{item.BookSubmitDate}}</td>
+        <td>{{item.TransactionStatus}}</td>
+    </tr>
+</table>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+</div>

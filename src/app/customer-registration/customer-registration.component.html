@@ -1,0 +1,55 @@
+
+<div style="margin-top:-130px;">
+    <h2 style="text-align: center;font-family: 'Times New Roman', Times, serif;">Customer Registration</h2><br>
+      <table style="margin: auto;" cellpadding="10px" cellspacing="5px">
+        
+          <tr>
+              <th>Enter Name</th>
+              <td><input type="text" [(ngModel)]="CustObj.CustomerName" class="form-control " required></td>
+          </tr>
+          <tr>
+              <th>Choose DOB</th>
+              <td><input type="date" [(ngModel)]="CustObj.CustomerDOB" class="form-control " required></td>
+          </tr>
+          <tr>
+              <th>Enter Phone No</th>
+              <td><input type="text" [(ngModel)]="CustObj.CustomerContact" class="form-control " required></td>
+          </tr>
+          <tr>
+              <th>Enter Address</th>
+              <td><input type="text" [(ngModel)]="CustObj.CustomerAddress" class="form-control " required></td>
+          </tr>
+          <tr>
+              <th>Choose Gender</th>
+              <td>&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" class="form-check-input" value="Male" name="gender" [(ngModel)]="CustObj.CustomerGender" required>Male &nbsp;&nbsp;&nbsp;    
+                  <input type="radio" class="form-check-input" value="Female" name="gender" [(ngModel)]="CustObj.CustomerGender" required>Female &nbsp;&nbsp;&nbsp;&nbsp; 
+                  <input type="radio" class="form-check-input" value="Other" name="gender" [(ngModel)]="CustObj.CustomerGender" required>Others 
+              </td>
+              
+          </tr>
+          <tr>
+              <th>Enter Email</th>
+              <td><input type="email" [(ngModel)]="CustObj.CustomerEmail" class="form-control " required></td>
+          </tr>
+          <tr>
+              <th>Create Password</th>
+              <td><input type="password" [(ngModel)]="pwd" class="form-control " required></td>
+          </tr>
+          <tr>
+              <th>Re-Enter Password</th>
+              <td><input type="password" [(ngModel)]="CustObj.CustomerPassword" [(ngModel)]="pass" (change)="checkPassword()" class="form-control " required>&nbsp;
+              </td>
+              <td>  <span id="errmsg" style="color: rgb(238, 4, 4);">{{errormsg}}</span></td>
+          </tr>  
+          <tr>
+              <td></td>
+              <td>
+
+                  <span style="color: rgb(233, 158, 158);"><b>Note: Please note down the Id for Login <br> **All the fields are Mandatory</b></span><br>
+              </td>
+          </tr>    
+      </table><br>
+   
+      <button (click)="AddData()" class="btn btn-primary pd" [disabled]="!CustObj.CustomerName ||!CustObj.CustomerEmail||!CustObj.CustomerPassword||!CustObj.CustomerDOB ||!CustObj.CustomerContact ||!CustObj.CustomerAddress||!CustObj.CustomerGender" style="margin-left: 650px;">Submit Details</button><br><br><br><br><br>
+  </div>
+  <button class="btn btn-primary user" (click)="back()" style="margin-left: 71%;margin-top: -18%;">Go Back</button>

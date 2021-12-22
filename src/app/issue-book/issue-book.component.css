@@ -1,0 +1,48 @@
+#main{
+    color :black;
+    margin-top: -150px;
+    /* background-color: white; */
+}
+#cart{
+    background-color: #f1f1f1;
+    
+    margin: 10px;
+    /* text-align: center; */
+    /* line-height: 75px; */
+    /* font-size: 30px; */
+
+}
+.cd {
+    box-shadow: #ecffd4; /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #e5fcfd;
+    float: left;
+    margin: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align:left;
+    width: 320px;
+    height: 350px;
+    
+  }
+ 
+
+.navbar{
+    background-color: #ded0e8;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
+    font-weight: bold;
+    color: black;
+}
+.tablehead{
+    background-color: #b8bdf1c7;
+}
+.tabledata{
+    background-color: #095b83b0; 
+    color: #fffcf0;
+}
+.pd{
+    margin-left: 20px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}

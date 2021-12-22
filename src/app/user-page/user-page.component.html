@@ -1,0 +1,80 @@
+<div id="userpage">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <a class="navbar-brand" routerLink="../User">Hello &nbsp;{{CustObj.CustomerName}}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" routerLink="../User">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="../BookIssue">Issue Book</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="../EditProfile">Update Profile</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " routerLink="../History">Check History</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal"
+                        data-bs-target="#myModal">
+                        Log Out
+                    </button>
+                    <div class="modal fade" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Do you want to logOut??</h4>
+                                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                                        (click)="logout()">Log Out</button>
+                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log Out</button> -->
+                </form>
+            </div>
+        </nav>
+    </div>
+    <div *ngIf="bn">
+        <div class="card w-75 cb">
+         No Book Issued
+          
+        </div>
+        <br><br><br><br><br>
+    </div>
+    <div class="cart" *ngIf="ba">
+        <div class="card w-75 cd " *ngFor="let item of transactions">
+            <div class="card-body">
+                <h5 class="card-title">{{item.BookName}}</h5>
+                <p class="card-text">Book Id :{{item.BookId}}</p>
+                <p class="card-text">Transaction Id :{{item.TransactionID}}</p>
+                <p class="card-text">Book Issue Date :{{item.BookIssueDate}}</p>
+                <p class="card-text">Book Price :{{item.BookPrice}}</p>
+                <p class="card-text">Book Catagory :{{item.BookCatagory}}</p>
+                <p class="card-text">AUthor Name :{{item.AuthorName}}</p>
+                <p class="card-text">Publsiher Name :{{item.PubLisherName}}</p>
+                <button type="button" (click)="SubmitBook(item.TransactionID)" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        <br><br><br><br>
+    </div>
+</div>
